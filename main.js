@@ -7,8 +7,12 @@ function createWindow() {
   win = new BrowserWindow({ width: 800, height: 600 });
 
   // win.loadURL(`file://${__dirname}/dist/local-weather-app/index.html`);
+  if (process.env.DEBUG) {
+    win.loadURL(`http://localhost:8000`);
+  } else {
+    win.loadURL(`file://${__dirnam}/dist/local-weather-app/index.html`);
+  }
 
-  win.loadURL(`http://localhost:8000`);
 
   win.on('closed', () => {
     win = null;
